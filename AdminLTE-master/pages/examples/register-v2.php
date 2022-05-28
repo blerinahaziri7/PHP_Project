@@ -20,7 +20,7 @@
     <div class="card-header text-center">
       <a href="../../index2.php" class="h1"><b>UP</b> FIEK</a>
     </div>
-    <div class="card-body">
+    <div class="card-body" >
       <div class="social-auth-links text-center">
         <a href="#" class="btn btn-block btn-primary">
           Regjistro student
@@ -106,6 +106,45 @@
             <button type="submit" name="submit" class="btn btn-primary btn-block">Register</button>
           </div>
           <!-- /.col -->
+          <div style="color: blue; margin: auto; width: 50%; padding:0px; background-color:yellow; text-align:center; padding-bottom: 0px; margin-top:10px;">
+          <?php
+          if(isset($_GET["error"]))
+          {
+            if($_GET["error"]=="emptyInput")
+            {
+              echo "<p>Fill all the fields</p>";
+            }
+            else if($_GET["error"]=="invalidUserID")
+            {
+              echo "<p>Choose a proper username!</p>";
+            }
+            else if($_GET["error"]=="invalidEmail")
+            {
+              echo "<p>Choose a proper Email!</p>";
+            }
+            else if($_GET["error"]=="emailsDoNotMatch")
+            {
+              echo "<p>The emails do not match</p>";
+            }
+            else if($_GET["error"]=="passwordsdonotmatch")
+            {
+              echo "<p>Passwords do not match</p>";
+            }
+            else if($_GET["error"]=="userExists")
+            {
+              echo "<p>This user alerady exists</p>";
+            }
+            else if($_GET["error"]=="stmtfailed")
+            {
+              echo "<p>Something went wrong</p>";
+            }
+            else if($_GET["error"]=="none")
+            {
+              echo "<p>You have signed up</p>";
+            }
+          }
+          ?>
+          </div>
         </div>
         <div class="social-auth-links text-center" >
           <a href="register-v2p.php" class="btn btn-block btn-primary" style="background-color:red; border:red">

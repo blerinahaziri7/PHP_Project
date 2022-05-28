@@ -22,7 +22,7 @@ if(isset($_POST["submit"]))
     if(emptyInputSignup($name, $surname, $username, $email, $confirmemail, $password, $confirmpassword) !== false) //if there is anything beside false then throw an error
                                      //there is a difference between is it equal to true or it is not equal to false
     {
-        header("location: ../examples/register-v2.php?error=PleaseFillAllTheRequiredFields");
+        header("location: ../examples/register-v2.php?error=emptyInput");
         exit(); //we are going to stop the script from running
     }
     if(invalidUid($username) !== false)
