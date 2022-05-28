@@ -1,3 +1,15 @@
+<?php
+  session_start();
+
+  if(isset($_SESSION['visitCount'])){
+    $_SESSION['visitCount']++;
+  }
+  else {
+    $_SESSION['visitCount']=1;
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

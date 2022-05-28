@@ -10,10 +10,23 @@
     $data=$conn->query("SELECT * FROM profesor WHERE email='$email' AND password='$password'");
     if($data->num_rows >0){
       exit("success");
+
     } else{
         exit("failed");
       }
-   
+      if($data->num_rows >0) {
+        if(isset($_POST['remember'])){
+          setcookie('email', $email, time()+60*60*7);
+          setcookie('password', $password, time()+60*60*7);
+
+        }
+        session_start();
+        $_SESSION['email']= $email;
+        header("location:profileP.php");
+      } else{
+        echo "Email or password invalid";
+      }
+    
     }
 ?>
 
