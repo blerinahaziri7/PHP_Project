@@ -2,7 +2,7 @@
 
 $serverName = "locahost";
 $dbUserName = "root";
-$dbPassword = "Fjorki1379!";
+$dbPassword = "1172058627";
 $dbName = "studentmanagementsystem";
 
 
