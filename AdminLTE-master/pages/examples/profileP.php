@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if(!isset($_SESSION['loggedIn'])){
-    header('Location:index.php');
+  if(!isset($_SESSION['login'])){
+    header('Location: index.php');
     exit();
   }
 ?>
@@ -36,7 +36,7 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link" style="background-color:blue">Log Out</a>
+        <a href="pages\examples\logout.php" class="nav-link" style="background-color:blue">Log Out</a>
       </li>
       
     </ul>

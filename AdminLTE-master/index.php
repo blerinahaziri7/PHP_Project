@@ -1,7 +1,7 @@
 <?php
   session_start();
   // if already logged in
-  if(isset($_SESSION['loggedIn'])){
+  if(isset($_SESSION['login'])){
     header("Location: pages/examples/profileP.php");
     exit();
   }
@@ -13,10 +13,10 @@
     $email = mysqli_real_escape_string($conn,$_POST['email']);
     $password = md5(mysqli_real_escape_string($conn,$_POST['password']));
 
-    $data=$conn->query("SELECT * FROM profesor WHERE email='$email' AND password='$password'");
+    $data=$conn->query("SELECT * FROM profesori WHERE email='$email' AND password='$password'");
 
     if($data->num_rows >0){
-      $_SESSION['loggedIn'] ='1';
+      $_SESSION['login'] ='1';
       $_SESSION["email"] = $email;
 
       exit("<font color='green'> Login success... </font>");
@@ -125,7 +125,6 @@
       var email = $("#username").val(); //e mer vleren prej username field
       var password = $("#password").val();
       
-
       if(email == "" || password == ""){
         alert("Please check your inputs!");
       }else{
@@ -149,9 +148,7 @@
 
         }
       )
-
       }
-
     })
   })
 </script>
