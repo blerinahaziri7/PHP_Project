@@ -1,3 +1,17 @@
+<?php
+
+$serverName = "locahost";
+$dbUserName = "root";
+$dbPassword = "1172058627";
+$dbName = "studentmanagementsystem";
+
+
+$conn = mysqli_connect("localhost", "root", "", "studentmanagementsystem");
+
+if(!$conn){
+    die("Connection failed:".mysqli_connect_error());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,6 +171,7 @@
                   </nav>
                   <!-- /.sidebar-menu -->
     </div>
+    
     <!-- /.sidebar -->
   </aside>
 
@@ -181,7 +196,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div class="container-fluid" >
         <div class="row">
           <div class="col-md-6">
             <div class="card"style="width:1250px">
@@ -190,7 +205,22 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered">
+                <?php 
+                  $sql="SELECT* FROM lendet LIMIT 2";
+                  $result = mysqli_query($conn, $sql);
+                  if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                      echo ("<p>");
+                      echo ($row['semestri']);
+                      echo ("<br>");
+                      echo ($row['emri']);
+                      echo "</p>";
+                    }
+                  }else{
+                    echo "Nuk ka asnje lende!";
+                  }
+                ?>
+                <!-- <table class="table table-bordered">
                   <thead>
                     <tr>
                       <th style="width: 10px">Semestri</th>
@@ -239,10 +269,13 @@
                       </td>
                     </tr>
                   </tbody>
-                </table>
+                </table> -->
               </div>
               <!-- /.card-body -->
-            </div>                 
+      </div>  
+            <a href="#">
+              <button type="button" value="more" style="border: none; background-color:lightblue; border-radius: 5px;font-size: large; padding: 5px; ">Shiko me shume</button>
+            </a>
     </section>
     <!-- /.content -->
   </div>
