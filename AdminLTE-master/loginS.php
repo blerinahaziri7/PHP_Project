@@ -22,7 +22,7 @@
       <a href="pages/examples/profileS.php" class="h1"><b>UP</b> FIEK</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in</p>
+      <p class="login-box-msg"> Student Sign in</p>
 
       <form action="pages/include/login.inc.php" method="post">
         <div class="input-group mb-3">
@@ -64,7 +64,7 @@
         <a href="forgot-password-v2.php">I forgot my password</a>
       </p>
       <p class="mb-0">
-        <a href="pages/examples/select.php" class="text-center">Don't have an account yet ?</a>
+        <a href="pages/examples/register-v2p.php" class="text-center">Don't have an account yet ?</a>
       </p>
     </div>
     <!-- /.card-body -->
