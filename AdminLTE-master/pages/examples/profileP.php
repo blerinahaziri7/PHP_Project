@@ -36,7 +36,7 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="pages\examples\logout.php" class="nav-link" style="background-color:blue">Log Out</a>
+        <a href="logout.php" class="nav-link" style="background-color:blue">Log Out</a>
       </li>
       
     </ul>
