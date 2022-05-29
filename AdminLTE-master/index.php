@@ -10,14 +10,27 @@
   if(isset($_POST['login'])){
     //$connection = mysqli_connect("localhost", "root", "", "studentmanagementsystem");
 
-    $email = mysqli_real_escape_string($conn,$_POST['email']);
-    $password = md5(mysqli_real_escape_string($conn,$_POST['password']));
+    $email = mysqli_real_escape_string($conn,$_POST['emailPHP']);
+    $password = md5(mysqli_real_escape_string($conn,$_POST['passwordPHP']));
 
     $data=$conn->query("SELECT * FROM profesori WHERE email='$email' AND password='$password'");
 
     if($data->num_rows >0){
       $_SESSION['login'] ='1';
       $_SESSION["email"] = $email;
+      
+      if(!empty($_POST['rememberPHP'])){
+
+        $rememberMe=$_POST['rememberPHP'];
+        setcookie('email', $email, time()+3600*24*7);
+        setcookie('password', $password, time()+3600*24*7);
+      }else{
+        //expire cookie
+        setcookie('email', $email, 30);
+        setcookie('password', $password, 30);
+      }
+
+      
 
       exit("<font color='green'> Login success... </font>");
 
@@ -59,6 +72,7 @@
 
 </head>
 <body class="hold-transition login-page">
+  
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
@@ -71,7 +85,8 @@
       <!-- action="pages/include/login.inc.php" -->
       <form  action="index.php" method="post">
         <div class="input-group mb-3">
-          <input type="text" name="username" id = "username" class="form-control" placeholder="Username">
+          <input type="text" name="username" id = "username" class="form-control" placeholder="Username"
+          value="<?php if(isset($_COOKIE['email'])){echo $_COOKIE['email'];};?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -79,7 +94,8 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+          value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];};?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -89,7 +105,7 @@
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="remember">
+              <input type="checkbox" id="remember" name="rememberMe">
               <label for="remember">
                 Remember Me
               </label>
@@ -124,6 +140,7 @@
     $("#login").on('click', function(){
       var email = $("#username").val(); //e mer vleren prej username field
       var password = $("#password").val();
+      var rememberMe = $("#remember").val();
       
       if(email == "" || password == ""){
         alert("Please check your inputs!");
@@ -135,8 +152,9 @@
           method: 'POST',
           data:{
             login: 1,
-            email: email,
-            password: password
+            emailPHP: email,
+            passwordPHP: password,
+            rememberPHP: rememberMe
           },
           success: function(response){
             $("#response").html(response);
