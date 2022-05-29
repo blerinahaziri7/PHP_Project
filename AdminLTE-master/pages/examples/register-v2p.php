@@ -28,7 +28,7 @@
         </a>
       </div>
 
-      <form action="../../index.php" method="post">
+      <form action="../../loginP.php" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="ID">
           <div class="input-group-append">
