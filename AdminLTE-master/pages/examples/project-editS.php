@@ -194,6 +194,11 @@
                 <label for="inputClientCompany">Koha e dorezimit</label>
                 <p id="inputClientCompany" class="form-control">Koha</p>
               </div>
+               <div>
+              <form action="api.php">
+              <input type="submit" value="Shiko detyrat" />
+              </form>
+              </div>
             </div>
            <!-- <div class="col-12">
                 <input type="submit" value="Save Changes" class="btn btn-success float-right">
