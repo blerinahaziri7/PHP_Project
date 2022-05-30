@@ -75,6 +75,8 @@ session_start();
                   <p>Bëjë pyetje</p>
                 </a>
               </li>
+            </ul>  
+          </li>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -93,7 +95,7 @@ session_start();
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <!--<li class="breadcrumb-item"><a href="#">Home</a></li>-->
-              <li class="breadcrumb-item active">User Profile</li>
+              <li class="breadcrumb-item active" style="text-color:red"><a href="email.php">Mail</a></li>
         
               <li class="breadcrumb-item active" style="text-color:blue"><a href="../include/logout.inc.php">Log Out</a></li>
             </ol>
