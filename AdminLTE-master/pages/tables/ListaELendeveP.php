@@ -25,6 +25,18 @@ if(!$conn){
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      var commentCount = 2;
+      $("#button").click(function(){
+        commentCount = commentCount + 2;
+          $("#subjects").load("../../pages/examples/load-subjects.php",{
+            commentNewCount: commentCount
+          });
+      });
+    });
+  </script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -202,10 +214,11 @@ if(!$conn){
             <div class="card"style="width:1250px">
               <div class="card-header">
                 <h3 class="card-title">Lista e Lëndëve</h3>
+                
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <?php 
+              <div class="card-body" id="subjects">
+              <?php 
                   $sql="SELECT* FROM lendet LIMIT 2";
                   $result = mysqli_query($conn, $sql);
                   if(mysqli_num_rows($result) > 0){
@@ -273,9 +286,9 @@ if(!$conn){
               </div>
               <!-- /.card-body -->
       </div>  
-            <a href="#">
-              <button type="button" value="more" style="border: none; background-color:lightblue; border-radius: 5px;font-size: large; padding: 5px; ">Shiko me shume</button>
-            </a>
+            
+        <button type="button" name="button" id="button" value="more" style="border: none; background-color:lightblue; border-radius: 5px;font-size: large; padding: 5px; ">Shiko me shume</button>
+            
     </section>
     <!-- /.content -->
   </div>
