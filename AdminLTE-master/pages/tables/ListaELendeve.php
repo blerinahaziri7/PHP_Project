@@ -150,6 +150,15 @@
                     <p>Bëjë pyetje</p>
                   </a>
                 </li>
+                </ul>
+            <li class="nav-item">
+            <a href="profileS.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Log Out
+              </p>
+            </a>
+          </li>  
         </nav>
         <!-- /.sidebar-menu -->
     </div>
@@ -242,6 +251,8 @@
                   </tbody>
                 </table>
               </div>
+              
+        
               <!-- /.card-body -->
               <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
@@ -252,8 +263,43 @@
                   <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                 </ul>
               </div>
-            </div>                 
+            </div> 
+            <script>
+            function showCD(str) {
+              if (str=="") {
+                document.getElementById("txtHint").innerHTML="";
+                return;
+              }
+              var xmlhttp=new XMLHttpRequest();
+              xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                  document.getElementById("txtHint").innerHTML=this.responseText;
+                }
+              }
+              xmlhttp.open("GET","getcd.php?q="+str,true);
+              xmlhttp.send();
+            }
+            </script>
+            </head>
+            <body>
+
+            <form>
+            Selekto nje lende:
+            <select name="cds" onchange="showCD(this.value)">
+              <option value="">Selekto nje lende:</option>
+              <option value="Programimi ne internet">Programimi ne internet</option>
+              <option value="Databaza">Databaza</option>
+              <option value="Interneti">Interneti</option>
+              <option value="Programim">Programim</option>
+              <option value="Komunikimi njeri kompjuter">Komunikimi njeri kompjuter</option>
+              <option value="Matematike 1">Matematike 1</option>
+              <option value="Qarqe elektrike">Qarqe elektrike</option>
+              <option value="Arkitekturë e kompjuterëve">Arkitekturë e kompjuterëve</option>
+            </select>
+            </form>
+            <div id="txtHint"><b>Informatat per lenden e zgjedhur do shfaqen ketu:</b></div>                          
     </section>
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
