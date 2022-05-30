@@ -148,7 +148,7 @@
               //if everything okay send information to server
       $.ajax(
         {
-          url: 'index.php',
+          url: 'loginP.php',
           method: 'POST',
           data:{
             login: 1,
