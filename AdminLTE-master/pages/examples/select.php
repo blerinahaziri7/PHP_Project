@@ -29,7 +29,7 @@
       </a>
     </div>
 
-    <a href="login-v2.php" class="text-center">I already have a membership</a>
+    <a href="../../index.php" class="text-center">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div><!-- /.card -->
