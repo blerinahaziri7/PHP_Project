@@ -57,14 +57,24 @@
           <!-- /.col -->
         </div>
       </form>
-
-     
-
+      <?php
+          if(isset($_GET["error"]))
+          {
+            if($_GET["error"]=="emptyInput")
+            {
+              echo "<p>Fill all the fields</p>";
+            }
+            else if($_GET["error"]=="wrongLogin")
+            {
+              echo "<p>Please check your username and password</p>";
+            }
+          }
+          ?>
       <p class="mb-1">
         <a href="forgot-password-v2.php">I forgot my password</a>
       </p>
       <p class="mb-0">
-        <a href="pages/examples/register-v2p.php" class="text-center">Don't have an account yet ?</a>
+        <a href="pages/examples/register-v2.php" class="text-center">Don't have an account yet ?</a>
       </p>
     </div>
     <!-- /.card-body -->

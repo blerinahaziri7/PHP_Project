@@ -1,5 +1,11 @@
 <?php
- include_once 'headerS.php'
+session_start();
+ include_once 'headerS.php';
+
+ if(!isset($_SESSION["username"]) || empty($_SESSION["username"]))
+  {
+    header("location: ../../loginS.php?error=sessionNotWorking");
+  }
 ?>
 
       <!-- Sidebar Menu -->
@@ -86,9 +92,10 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <!--<li class="breadcrumb-item"><a href="#">Home</a></li>-->
               <li class="breadcrumb-item active">User Profile</li>
-              <li class="breadcrumb-item active" style="background-color:blue">Log Out</li>
+        
+              <li class="breadcrumb-item active" style="text-color:blue"><a href="../include/logout.inc.php">Log Out</a></li>
             </ol>
           </div>
         </div>
@@ -100,15 +107,17 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-3">
-
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
                 </div>
+                <h3 class="profile-username text-center">
+                <?php
 
-                <h3 class="profile-username text-center">Full Name</h3>
-
+                  echo $_SESSION['username'];
+                ?>
+                </h3>
                 <p class="text-muted text-center">Student</p>
               </div>
               <!-- /.card-body -->

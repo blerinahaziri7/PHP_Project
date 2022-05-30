@@ -12,5 +12,12 @@ if(isset($_POST["submit"]))
     {
         header("location: ../../loginS.php?error=emptyInput");
         exit(); //we are going to stop the script from running
+    }
+
+    loginUser($conn, $username, $password);
 }
+else
+{
+    header("location: ../../loginS.php?error=emptyInput");
+    exit(); //we are going to stop the script from running
 }

@@ -163,4 +163,20 @@ function loginUser($conn, $username, $password)
      exit(); //we are going to stop the script from running
    }
 
+   $pwdHashed = $uidExists["password"]; //beacuse this is an associative array
+   $checkPwd = password_verify($password, $pwdHashed);
+
+   if($checkPwd === false)
+   {
+     header("location: ../../loginS.php?error=wrongLogin");
+     exit(); //we are going to stop the script from running
+   }
+   else if($checkPwd === true)
+   {
+     session_start();
+     $_SESSION["username"] = $uidExists["username"];
+     $_SESSION["password"] = $uidExists["password"]; 
+     header("location: ../examples/profileS.php");
+     exit(); //we are going to stop the script from running
+   }
 }
