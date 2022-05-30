@@ -186,7 +186,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" style="text-color:red"><a href="emailP.php">Mail</a></li>
               <li class="breadcrumb-item active">User Profile</li>
             </ol>
           </div>
