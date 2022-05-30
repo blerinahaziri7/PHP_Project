@@ -32,7 +32,7 @@ function invalidUid($username)
 function invalidEmail($email)
 {
    $result;
-   $regex = '/^[a-z0-9A-Z]+@student.uni-pr.edu$/';  
+   $regex = '/^[a-z0-9A-Z]+\.[a-z0-9A-Z]+@student.uni-pr.edu$/';  
    if (!preg_match($regex, $email)) {
     $result = true;
    } else { 
