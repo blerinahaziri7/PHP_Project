@@ -228,6 +228,14 @@ if(!$conn){
                       echo ("<br>");
                       echo ($row['emri']);
                       echo "</p>";
+                      echo ($row['emri']);
+                      echo("<br>");
+                      echo("<br>");
+                      echo('<a href="../examples/ShtoLende.php">
+                      <button type="button" value="Shto lende" style="border: none; background-color:lightblue; border-radius: 5px;font-size: large; padding: 5px;">Modifiko</button>
+                    </a>');
+                    echo("<hr>");
+                      
                     }
                   }else{
                     echo "Nuk ka asnje lende!";
