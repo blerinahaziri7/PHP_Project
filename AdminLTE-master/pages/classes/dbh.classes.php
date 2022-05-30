@@ -1,7 +1,7 @@
 <?php
 //database class that is going to open up a database connection
 
-class Dbh{
+class Dbh {
     protected function connect() // Basically a method. Na duhet me extend e klasat qe e bojn extend me mujt me perdore.
     {
         try 
