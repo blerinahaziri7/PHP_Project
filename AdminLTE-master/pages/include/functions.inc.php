@@ -137,3 +137,30 @@ function createUser($conn, $name, $surname, $username, $email, $password)
      header("location: ../examples/register-v2.php?error=none");   
      exit(); 
 }
+
+function emptyInputLogin($username, $password)
+{
+   $result;
+   if(empty($username) || empty($password))
+   {
+          //$error="Please fill all the fields";
+          $result = true; //There is a mistake here
+   }
+   else 
+   {
+        $result = false;
+   }
+   return $result;
+}
+
+function loginUser($conn, $username, $password)
+{
+   $uidExists = userExists($conn, $username, $username); //We are asking either for username or email 
+
+   if($uidExists===false)
+   {
+     header("location: ../../loginS.php?error=wrongLogin");
+     exit(); //we are going to stop the script from running
+   }
+
+}
