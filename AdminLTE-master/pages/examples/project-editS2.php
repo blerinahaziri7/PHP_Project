@@ -218,9 +218,10 @@
             </div>
               <div class="row">
                 <div class="col-12">
-                  <input type="submit" value="Save Changes" class="btn btn-success float-right">
+                  <!-- <input type="submit" value="Save Changes" class="btn btn-success float-right"> -->
                   <div class="col-12" style="height: 60px; padding-top: 0px;padding-bottom: 0px;padding-right: 0px;padding-left: 650px;">
                     <a href="#" class="btn btn-danger">Unsubmit <i class="fas fa-trash"></i></a>
+                    <a href="uploadFile.php" class="btn btn-danger" >Save Changes</a>
                 </div>
                 </div>
 
