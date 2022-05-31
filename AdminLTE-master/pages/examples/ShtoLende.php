@@ -1,3 +1,58 @@
+<?php
+  $serverName = "locahost";
+  $dbUserName = "root";
+  $dbPassword = "1172058627";
+  $dbName = "studentmanagementsystem";
+
+  $conn = mysqli_connect("localhost", "root", "", "studentmanagementsystem");
+  
+    // $id=$_POST['lendaID'];
+    // $emri=$_POST['emriLendes'];
+    // $semestri= $_POST['semestri'];
+    // $profesori= $_POST['profesori'];
+    
+    // $sql ="INSERT INTO lendet (LendaID, emri, semestri, profesori) VALUES ('$id', '$emri', '$semestri', '$profesori');";
+    // mysqli_query($conn, $sql);
+
+
+    
+    if(isset($_POST['shto']))
+    {
+        $emri =mysqli_real_escape_string($conn, $_POST['emriLendes']);
+        $semestri =mysqli_real_escape_string($conn, $_POST['semestri']);
+        $profesori = mysqli_real_escape_string($conn,$_POST['profesori']);
+  
+
+        $sql ="INSERT INTO lendet (emri, semestri, profesori) VALUES ('$emri', '$semestri', '$profesori');";
+        mysqli_query($conn, $sql);
+        
+        
+       // if($sql->num_rows>0)
+        //{
+          //  echo '<script type="text/javascript"> alert("Subject added to the database") </script>'; }
+        //else{
+          //  echo '<script type="text/javascript"> alert("Subject count not be added to the database") </script>'; }
+    }
+
+    if(isset($_POST['modifiko']))
+    {
+        $emri =mysqli_real_escape_string($conn, $_POST['emriLendes']);
+        $semestri =mysqli_real_escape_string($conn, $_POST['semestri']);
+        $profesori = mysqli_real_escape_string($conn,$_POST['profesori']);
+  
+
+        $sql ="UPDATE lendet (emri, semestri, profesori) SET ('$emri', '$semestri', '$profesori');";
+        mysqli_query($conn, $sql);
+        
+        
+       // if($sql->num_rows>0)
+        //{
+          //  echo '<script type="text/javascript"> alert("Subject added to the database") </script>'; }
+        //else{
+          //  echo '<script type="text/javascript"> alert("Subject count not be added to the database") </script>'; }
+    }
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +66,19 @@
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- <script>
+    $(document).ready(function(){
+     $("#shto").on('click', function(){
+        if(lendaID.val() !=""){
+          alert("Email enterted");
+        }
+        else{
+          alert("Please enter email")
+        }
+    });
+    });
+  // </script> -->
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -38,7 +106,7 @@
           <i class="fas fa-search"></i>
         </a>
         <div class="navbar-search-block">
-          <form class="form-inline">
+          <form class="form-inline" >
             <div class="input-group input-group-sm">
               <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
@@ -198,18 +266,27 @@
               </div>
             </div>
             <div class="card-body">
+            <form   action="ShtoLende.php" method="post"> 
+              <div class="form-group">
+                <label for="lendaID">LendaID</label>
+                <input type="text" id="lendaID" class="form-control" name="lendaID" disabled>
+              </div>
               <div class="form-group">
                 <label for="inputName">Emri i lëndës</label>
-                <input type="text" id="inputName" class="form-control">
+                <input type="text" id="inputName" class="form-control" name="emriLendes">
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">Semestri</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
+                <input type="text" id="semestri" class="form-control" name="semestri">
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">Profesori</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
+                <input type="text" id="profesori" class="form-control" name="profesori">
               </div>
+              <div>
+              <button type="submit" name="shto" class="btn btn-primary btn-block">Register</button>
+              </div>
+            </form>
             </div>
             <!-- /.card-body -->
           </div>
@@ -220,7 +297,8 @@
       <div class="row">
         <div class="col-12">
           <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Shto lëndën e re" class="btn btn-success float-right">
+          
+         
         </div>
       </div>
     </section>
@@ -251,5 +329,6 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
 </body>
 </html>
