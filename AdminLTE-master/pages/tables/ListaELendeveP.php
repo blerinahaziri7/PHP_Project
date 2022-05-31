@@ -214,7 +214,11 @@ if(!$conn){
             <div class="card"style="width:1250px">
               <div class="card-header">
                 <h3 class="card-title">Lista e Lëndëve</h3>
-                
+                <form action="" style="width:100px">
+                            <a href="../examples/ShtoLende.php">
+                              <button type="button" value="Shto lende" style="border: none; background-color:#ff4b47; border-radius: 5px;font-size: large; padding: 5px;">Shto lëndë</button>
+                            </a>
+                          </form>
               </div>
               <!-- /.card-header -->
               <div class="card-body" id="subjects">
@@ -226,7 +230,7 @@ if(!$conn){
                       echo ("<p>");
                       echo ($row['semestri']);
                       echo ("<br>");
-                      echo ($row['emri']);
+                      
                       echo "</p>";
                       echo ($row['emri']);
                       echo("<br>");
