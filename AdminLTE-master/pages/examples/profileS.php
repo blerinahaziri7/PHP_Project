@@ -1,12 +1,13 @@
 <?php
-session_start();
- include_once 'headerS.php';
+  session_start();
+  //include_once 'headerS.php';
 
- if(!isset($_SESSION["username"]) || empty($_SESSION["username"]))
-  {
-    header("location: ../../loginS.php?error=sessionNotWorking");
-  }
-?>
+  if(!isset($_SESSION["username"]) || empty($_SESSION["username"]))
+   {
+     header("location: ../../loginS.php?error=sessionNotWorking");
+   }
+ ?>
+
 <body onload="myFunction()">
 	<script>
 		function myFunction() {
@@ -195,8 +196,6 @@ function myFunction() {
                   <p>Bëjë pyetje</p>
                 </a>
               </li>
-            </ul>  
-          </li>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -215,7 +214,7 @@ function myFunction() {
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <!--<li class="breadcrumb-item"><a href="#">Home</a></li>-->
-              <li class="breadcrumb-item active" style="text-color:red"><a href="email.php">Mail</a></li>
+              <li class="breadcrumb-item active"><a href="email.php">Mail</a></li>
         
               <li class="breadcrumb-item active" style="text-color:blue"><a href="../include/logout.inc.php">Log Out</a></li>
             </ol>
@@ -236,7 +235,6 @@ function myFunction() {
                 </div>
                 <h3 class="profile-username text-center">
                 <?php
-
                   echo $_SESSION['username'];
                 ?>
                 </h3>

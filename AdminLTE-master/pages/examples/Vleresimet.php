@@ -1,13 +1,16 @@
 <?php
-  session_start();
-
-  if(isset($_SESSION['visitCount'])){
-    $_SESSION['visitCount']++;
-  }
-  else {
-    $_SESSION['visitCount']=1;
-  }
-
+    //Përdorimi i PHP sesioneve për te numëruar vizitat në një ueb faqe
+    session_start();
+    if( isset( $_SESSION['numeruesi'] ) )
+    {
+        $_SESSION['numeruesi'] += 1;
+    }
+    else
+    {
+        $_SESSION['numeruesi'] = 1;
+    }
+    $msg = "Ju keni vizituar kete faqe ". $_SESSION['numeruesi'];
+    $msg .= " here ne kete sesion.";
 ?>
 
 <!DOCTYPE html>
@@ -279,12 +282,17 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-
+      <?php echo ( $msg ); ?>
+      <?php 
+        //unset($_SESSION['numeruesi']);
+       //session_destroy();
+        */
+      ?>
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+  
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0

@@ -15,7 +15,7 @@ function emptyInputSignup( $name, $surname, $username, $email, $confirmemail, $p
    return $result1;
 }
 
-function invalidUid($username)
+function invalidUid(&$username)
 {
    $result;
    if(preg_match('/^[a-zA-Z0-9]{5,}$/', $username))
