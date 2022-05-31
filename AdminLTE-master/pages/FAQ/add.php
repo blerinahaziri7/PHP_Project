@@ -48,6 +48,24 @@ $faqs = $statement->fetchAll();
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
+
+<?php 
+   if (isset($_POST['submitted'])){
+    #nese po, vendosi vlerat nga POST array ne variabla
+    $newbgColor=$_POST['bgColor'];
+    #set cookies
+    setcookie("bgColor",$newbgColor,time()+3600);
+}
+//ne rast se shfrytezuesi vjen per here te pare dhe cookies nuk jane vendosur,
+//atehere
+if (!isset($_COOKIE['bgColor'])) {
+$bgColor = "#f0ca59";
+}
+#nese cookie-t jane vendousr, atehere perdori ato cookie
+else{
+$bgColor = $_COOKIE['bgColor'];
+}
+?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -86,6 +104,7 @@ $faqs = $statement->fetchAll();
         </div>
       </li>
     </ul>
+    
   </nav>
   <!-- /.navbar -->
 
@@ -224,17 +243,17 @@ $faqs = $statement->fetchAll();
         <div class="offset-md-3 col-md-6">
             <h1 class="text-center">Shto FAQ</h1>
             <!-- for to add FAQ -->
-            <form method="POST" action="">
+            <form method="POST" action="" >
                 <!-- question -->
-                <div class="form-group">
+                <div class="form-group" >
                     <label>Shkruaj pyetjen</label>
-                    <input type="text" name="question" class="form-control" required />
+                    <input  style="background-color:<?php echo $bgColor ?>"type="text" name="question" class="form-control" required />
                 </div>
  
                 <!-- answer -->
                 <div class="form-group">
                     <label>Shkruaj përgjigjen</label>
-                    <textarea name="answer" id="answer" class="form-control" required></textarea>
+                    <textarea  style="background-color:<?php echo $bgColor ?>" name="answer" id="answer" class="form-control" required></textarea>
                 </div>
                 <!-- submit button -->
                 <input type="submit" name="submit" class="btn btn-info" value="Add FAQ " />
@@ -266,7 +285,7 @@ $faqs = $statement->fetchAll();
                           <form method="POST" action="delete.php" onsubmit="return confirm('Are you sure you want to delete this FAQ ?');">
                             <a href="edit.php?id=<?php echo $faq['id']; ?>" class="btn btn-warning btn-sm">
                               Edit
-                          </a>
+                              </a>
                               <input type="hidden" name="id" value="<?php echo $faq['id']; ?>" required />
                               <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
                           </form>
@@ -277,6 +296,17 @@ $faqs = $statement->fetchAll();
         </table>
     </div>
 </div>
+<form action= "<?php echo $_SERVER['PHP_SELF']; ?>" method ="POST">
+<span> </span></br></br>
+<span class="css" >Choose background mode</span>
+<select name=bgColor class="css">
+<option value ="#FFFFFF" selected>White</option>
+<option value ="#FFE5CC" >Pink</option>
+<option value ="#EFEFEF">Light</option>
+</select>
+<input type ="hidden" name="submitted" value="true">
+<input type="submit" value="Kujto vlerat" class="css">
+</form>
  </section>
     <!-- Main content -->
     <!-- /.content -->
