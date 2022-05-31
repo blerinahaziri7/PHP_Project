@@ -13,7 +13,7 @@
     $email = mysqli_real_escape_string($conn,$_POST['emailPHP']);
     $password = md5(mysqli_real_escape_string($conn,$_POST['passwordPHP']));
 
-    $data=$conn->query("SELECT * FROM profesori WHERE email='$email' AND password='$password'");
+    $data=$conn->query("SELECT * FROM profesor WHERE email='$email' AND password='$password'");
 
     if($data->num_rows >0){
       $_SESSION['login'] ='1';

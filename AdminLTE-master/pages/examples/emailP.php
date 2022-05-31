@@ -1,80 +1,108 @@
 <?php
  session_start();
  include_once 'headerS.php';
+ require '../../includes/PHPMailer.php';
+ require '../../includes/SMTP.php';
+ require '../../includes/Exception.php';
+ use PHPMailer\PHPMailer\PHPMailer;
+ use PHPMailer\PHPMailer\SMTP;
+ use PHPMailer\PHPMailer\Exception;
+
+ $mail = new PHPMailer();
+ $mail->isSMTP();
+ $mail->Host="smtp.gmail.com";
+ $mail->SMTPAuth = "true";
+ $mail->SMTPSecure = "tls";
+ $mail->Port = "587";
+ $mail->Username = "albak6809@gmail.com";
+ $mail->Password = "albaalba1";
+ $mail->Subject = "Test Email Using PHPMailer";
+ $mail->setFrom("albaalba1");
+
+ $mail->Body="This is plain text email body";
+
+ //receiver email address
+ $mail->addAddress('albak6809@gmail.com');
+  $mail->Send()
+ $mail->smtpClose();
+
 ?>
 
-           <!-- Sidebar Menu -->
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="profileS.php" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Profili i studentit
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Detyrat e mia
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../tables/ListaELendeve.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lëndët</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="project-editS.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Detyrat e mia</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="project-editS2.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dorëzo detyrën</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="Vleresimet.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Vlersimet</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                FAQ
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="faqStudent.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>FAQ</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/RegjistroPyetje.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Bëjë pyetje</p>
-                </a>
-              </li>
-            </ul>  
-          </li>
-      </nav>
-      <!-- /.sidebar-menu -->
+
+                                      <!-- Sidebar Menu -->
+                                      <nav class="mt-2">
+                                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                          <li class="nav-item">
+                                            <a href="profileP.php" class="nav-link">
+                                              <i class="nav-icon fas fa-user"></i>
+                                              <p>
+                                                Profili i profesorit
+                                              </p>
+                                            </a>
+                                          </li>
+                                          <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                              <i class="nav-icon fas fa-copy"></i>
+                                              <p>
+                                                Detyrat e studenteve
+                                                <i class="fas fa-angle-left right"></i>
+                                              </p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                              <li class="nav-item">
+                                                <a href="Dorezimet.php" class="nav-link">
+                                                  <i class="far fa-circle nav-icon"></i>
+                                                  <p>Detyrat e dorezuara</p>
+                                                </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                <a href="DetyratEVlersuara.php" class="nav-link">
+                                                  <i class="far fa-circle nav-icon"></i>
+                                                  <p>Detyrat e vlersuara</p>
+                                                </a>
+                                              </li>
+                                            </ul>
+                                          </li>
+                                          <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                              <i class="nav-icon fas fa-copy"></i>
+                                              <p>
+                                                Lista e lendeve
+                                                <i class="fas fa-angle-left right"></i>
+                                              </p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                              <li class="nav-item">
+                                                <a href="../tables/ListaELendeveP.php" class="nav-link">
+                                                  <i class="far fa-circle nav-icon"></i>
+                                                  <p>Lista e lendeve</p>
+                                                </a>
+                                              </li>
+                                            </ul>
+                                          </li>
+                                          <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                              <i class="nav-icon fas fa-chart-pie"></i>
+                                              <p>
+                                                FAQ
+                                                <i class="right fas fa-angle-left"></i>
+                                              </p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                              <li class="nav-item">
+                                                <a href="faqStudent.php" class="nav-link">
+                                                  <i class="far fa-circle nav-icon"></i>
+                                                  <p>FAQ</p>
+                                                </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                <a href="../forms/RegjistroPyetje.php" class="nav-link">
+                                                  <i class="far fa-circle nav-icon"></i>
+                                                  <p>Bëjë pyetje</p>
+                                                </a>
+         </li>
+    </nav>
+  <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -110,18 +138,19 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <form action="" method="post">
+              <form id="myForm" method="post">
                 <div class="form-group">
-                  <input class="form-control" id="name" name="name" placeholder="Your name">
+                  <input type="text" class="form-control" name="name" placeholder="Enter your name:">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" id="email" name="email" placeholder="Your email">
+                  <input type="text" class="form-control" name="email" placeholder="Enter your email:">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" id="text" name="email" placeholder="subject">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject:">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="body" name="message" class="form-control" style="height: 300px">
+                    <textarea id="body" rows="5" class="form-control" >
+                    </textarea>
                 </div>
                 <div class="form-group">
 
@@ -131,7 +160,7 @@
               <div class="card-footer">
                 <div class="float-right">
                   <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Draft</button>
-                  <button type="button" onclick="sendEmail()" name="submit" class="btn btn-primary" value="Send and Email"><i class="far fa-envelope"></i> Send</button>
+                  <button type="button" onclick="sendEmail()" name="submit" class="btn btn-primary" value="Send an email"><i class="far fa-envelope"></i> Send</button>
                 </div>
                 <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>
               </div>
