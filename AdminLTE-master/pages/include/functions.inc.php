@@ -1,18 +1,18 @@
 <?php
-
+$result1;
 function emptyInputSignup( $name, $surname, $username, $email, $confirmemail, $password, $confirmpassword)
 {
-   $result;
+   global $result1;
    if(empty($name) || empty($surname)  || empty($username) || empty($email) || empty($confirmemail) || empty($password) || empty($confirmpassword)) //if there is or there is not data inside what we paste in the function
    {
           //$error="Please fill all the fields";
-          $result = true; //There is a mistake here
+          $result1 = true; //There is a mistake here
    }
    else 
    {
-        $result = false;
+        $result1 = false;
    }
-   return $result;
+   return $result1;
 }
 
 function invalidUid($username)
