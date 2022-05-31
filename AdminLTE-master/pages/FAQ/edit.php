@@ -1,7 +1,7 @@
 <?php
  
     // connect with database
-    $conn = new PDO("mysql:host=localhost:3307;dbname=studentmanagementsystem", "root", "");
+    $conn = new PDO("mysql:host=localhost;dbname=studentmanagementsystem", "root", "");
 
    // check if FAQ exists
    $sql = "SELECT * FROM faqs WHERE id = ?";
@@ -30,7 +30,7 @@ if (isset($_POST["submit"]))
     ]);
  
     // redirect back to previous page
-    header("Location: #" . $_SERVER["HTTP_REFERER"]);
+    header("location: add.php");
 }
 
 ?>
@@ -183,13 +183,13 @@ if (isset($_POST["submit"]))
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="faqStudent.php" class="nav-link">
+                    <a href="../FAQ/indexFaq.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>FAQ</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../forms/RegjistroPyetje.php" class="nav-link">
+                    <a href="../FAQ/add.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Bëj pyetje</p>
                     </a>
@@ -343,5 +343,3 @@ $(function () {
 </script>
 </body>
 </html>
-
-    

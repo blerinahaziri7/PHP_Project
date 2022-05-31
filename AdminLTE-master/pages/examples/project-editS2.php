@@ -139,13 +139,13 @@
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="faqStudent.php" class="nav-link">
+                      <a href="../FAQ/indexFaq.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>FAQ</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="../forms/RegjistroPyetje.php" class="nav-link">
+                      <a href="../FAQ/add.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Bëjë pyetje</p>
                       </a>

@@ -1,7 +1,7 @@
 <?php
  
     // connect with database
-    $conn = new PDO("mysql:host=localhost:3307;dbname=studentmanagementsystem", "root", "");
+    $conn = new PDO("mysql:host=localhost;dbname=studentmanagementsystem", "root", "");
  
     // check if insert form is submitted
     if (isset($_POST["submit"]))
@@ -192,13 +192,13 @@ $bgColor = $_COOKIE['bgColor'];
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="../examples/faqStudent.php" class="nav-link">
+                      <a href="../FAQ/indexFaq.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>FAQ</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="RegjistroPyetje.php" class="nav-link">
+                      <a href="../FAQ/add.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Bëj pyetje</p>
                       </a>
@@ -339,4 +339,3 @@ $bgColor = $_COOKIE['bgColor'];
 <!-- Page specific script -->
 </body>
 </html>
-

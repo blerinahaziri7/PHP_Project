@@ -1,7 +1,7 @@
 <?php
  
     // connect database
-    $conn = new PDO("mysql:host=localhost:3307;dbname=studentmanagementsystem", "root", "");
+    $conn = new PDO("mysql:host=localhost;dbname=studentmanagementsystem", "root", "");
 
     // check if FAQ existed
     $sql = "SELECT * FROM faqs WHERE id = ?";
@@ -24,6 +24,6 @@
     ]);
  
     // redirect to previous page
-    header("Location: #" . $_SERVER["HTTP_REFERER"]);
+    header("Location: add.php");
  
 ?>

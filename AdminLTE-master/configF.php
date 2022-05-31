@@ -3,12 +3,12 @@
  // Include the autoloader provided in the SDK
 require_once(__DIR__.'/Facebook/autoload.php');
 
-define('APP_ID', '1169625790246175');
-define('APP_SECRET', 'f1b39fa343d31733fcfd75feaab8dd94');
+define('APP_ID', '756613152367433');
+define('APP_SECRET', '3d4a7fe91c298a06edcfa5e0bdf7f126');
 define('API_VERSION', 'v2.5');
 //define('FB_BASE_URL', 'http://localhost/PHP_Project/AdminLTE-master/');
 
-define('BASE_URL', 'http://localhost/PHP_Project/');
+define('BASE_URL', 'http://localhost:8080/PHP_Project/AdminLTE-master/');
 
 if(!session_id()){
     session_start();

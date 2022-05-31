@@ -169,13 +169,13 @@ if(!$conn){
                         </a>
                         <ul class="nav nav-treeview">
                           <li class="nav-item">
-                            <a href="../examples/faqStudent.php" class="nav-link">
+                            <a href="../FAQ/indexFaq.php" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>FAQ</p>
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a href="../forms/RegjistroPyetje.php" class="nav-link">
+                            <a href="../FAQ/add.php" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Bëjë pyetje</p>
                             </a>
@@ -223,7 +223,7 @@ if(!$conn){
               <!-- /.card-header -->
               <div class="card-body" id="subjects">
               <?php 
-                  $sql="SELECT* FROM lendet LIMIT 2";
+                  $sql="SELECT* FROM lenda LIMIT 2";
                   $result = mysqli_query($conn, $sql);
                   if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_assoc($result)){
