@@ -1,14 +1,81 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['login'])){
-    header('Location: index.php');
-    exit();
+ session_start();
+ include_once 'headerS.php';
+ require '../../includes/PHPMailer.php';
+ require '../../includes/SMTP.php';
+ require '../../includes/Exception.php';
+ use PHPMailer\PHPMailer\PHPMailer;
+ use PHPMailer\PHPMailer\SMTP;
+ use PHPMailer\PHPMailer\Exception;
+
+ $mail = new PHPMailer();
+ $mail->isSMTP();
+ $mail->Host="smtp.gmail.com";
+ $mail->SMTPAuth = "true";
+ $mail->SMTPSecure = "tls";
+ $mail->Port = "587";
+ $mail->Username = "albak6809@gmail.com";
+ $mail->Password = "albaalba1";
+ $mail->Subject = "Manuali i perdorimit te Sistemit per Menaxhimin e Studenteve";
+ $mail->setFrom("albaalba1");
+
+ $mail->Body="Se shpejti...";
+
+ //receiver email address
+ $mail->addAddress('albak6809@gmail.com');
+  if($mail->Send())
+  {
+    echo "Email sent";
   }
+  else
+  {
+    echo "Not Sent";
+  }
+ 
+ $mail->smtpClose();
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<body onload="myFunction()">
+	<script>
+		function myFunction() {
+			let text = "Accept Cookies";
+			if (confirm(text) == true) {
+
+			} else {
+				window.location = "signup.inc.php";
+			}
+		}
+
+		function showHint(str) {
+			if (str.length == 0) {
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("txtHint").innerHTML = this.responseText;
+					}
+				}
+				xmlhttp.open("GET", "loginAjax.php?q=" + str, true);
+				xmlhttp.send();
+			}
+		}
+	</script>
+<script>
+function myFunction() {
+  let text = "Accept Cookies";
+  if (confirm(text) == true) {
+	
+  } else {
+	window.location="signup.php";
+  }
+}
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | User Profile</title>
@@ -96,8 +163,7 @@
           </div>
         </div>
       </div>
-
-                                      <!-- Sidebar Menu -->
+     <!-- Sidebar Menu -->
                                       <nav class="mt-2">
                                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                           <li class="nav-item">
@@ -158,7 +224,7 @@
                                             </a>
                                             <ul class="nav nav-treeview">
                                               <li class="nav-item">
-                                                <a href="../examples/faqStudent.php" class="nav-link">
+                                                <a href="faqStudent.php" class="nav-link">
                                                   <i class="far fa-circle nav-icon"></i>
                                                   <p>FAQ</p>
                                                 </a>
@@ -168,9 +234,9 @@
                                                   <i class="far fa-circle nav-icon"></i>
                                                   <p>Bëjë pyetje</p>
                                                 </a>
-                                              </li>
-                                      </nav>
-                                      <!-- /.sidebar-menu -->
+         </li>
+    </nav>
+  <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -182,12 +248,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Profile</h1>
+            <h1>Compose</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item active" style="text-color:red"><a href="emailP.php">Mail</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
+              <li class="breadcrumb-item"><a href="profileS.php">Home</a></li>
+              <li class="breadcrumb-item active">Compose</li>
             </ol>
           </div>
         </div>
@@ -198,115 +264,52 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-3">
 
-            <!-- Profile Image -->
+          <div class="col-md-9">
             <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                <div class="text-center">
-                </div>
-
-                <h3 class="profile-username text-center">Full Name</h3>
-
-                <p class="text-muted text-center">Profesor</p>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
-            <!-- About Me Box -->
-            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">About Me</h3>
+                <h3 class="card-title">Kerkese per manualin e perdorimit</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i>UP</strong>
+              <form id="myForm" method="post">
+               <!-- <div class="form-group">
+                  <input type="text" class="form-control" name="name" placeholder="Enter your name:">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="email" placeholder="Enter your email:">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject:">
+                </div>
+                <div class="form-group">
+                    <textarea id="body" rows="5" class="form-control" >
+                    </textarea>
+                </div>-->
+                <div class="form-group">
 
-                <p class="text-muted">
-                  FIEK
-                </p>
-
-                <hr>
-
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> FIEK </strong>
-
-                <p class="text-muted">Prishtine, Kosove</p>
-
+                </div>
               </div>
               <!-- /.card-body -->
+              <div class="card-footer">
+                <div class="float-right">
+                  <!--<button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Draft</button>-->
+                  <button type="button" onclick="sendEmail()" name="submit" class="btn btn-primary" value="Send an email"><i class="far fa-envelope"></i>Send it to my email</button>
+                </div>
+                <!--<button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>-->
+              </div>
+            </form>
+              <!-- /.card-footer -->
             </div>
             <!-- /.card -->
           </div>
           <!-- /.col -->
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Change username</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Change password</a></li>
-                  </ul>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                  <div class="tab-content">
-                    <!-- /.tab-pane -->
-                    <!--Qka m'duhet-->
-                    <div class="active tab-pane" id="activity">
-                      <form class="form-horizontal">
-                        <div class="form-group row">
-                          <label for="inputName" class="col-sm-2 col-form-label">Username</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputName" placeholder="Name">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="inputEmail" class="col-sm-2 col-form-label">Confirm Username</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Confirm</button>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="tab-pane" id="settings">
-                        <form class="form-horizontal">
-                          <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-10">
-                              <input type="password" class="form-control" id="inputName" placeholder="Name">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputEmail" class="col-sm-2 col-form-label">Change Password</label>
-                            <div class="col-sm-10">
-                              <input type="password" class="form-control" id="inputEmail" placeholder="Email">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <div class="offset-sm-2 col-sm-10">
-                              <button type="submit" class="btn btn-danger">Confirm</button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    <!-- /.tab-pane -->
-                  </div>
-                  <!-- /.tab-content -->
-                </div><!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-    </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -329,7 +332,16 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+<!-- Summernote -->
+<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote()
+  })
+</script>
 </body>
 </html>
