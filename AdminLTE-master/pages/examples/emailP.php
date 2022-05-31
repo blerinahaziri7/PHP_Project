@@ -16,14 +16,22 @@
  $mail->Port = "587";
  $mail->Username = "albak6809@gmail.com";
  $mail->Password = "albaalba1";
- $mail->Subject = "Test Email Using PHPMailer";
+ $mail->Subject = "Manuali i perdorimit te Sistemit per Menaxhimin e Studenteve";
  $mail->setFrom("albaalba1");
 
- $mail->Body="This is plain text email body";
+ $mail->Body="Se shpejti...";
 
  //receiver email address
  $mail->addAddress('albak6809@gmail.com');
-  $mail->Send()
+  if($mail->Send())
+  {
+    echo "Email sent";
+  }
+  else
+  {
+    echo "Not Sent";
+  }
+ 
  $mail->smtpClose();
 
 ?>
@@ -134,12 +142,12 @@
           <div class="col-md-9">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h3 class="card-title">Compose New Message</h3>
+                <h3 class="card-title">Kerkese per manualin e perdorimit</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
               <form id="myForm" method="post">
-                <div class="form-group">
+               <!-- <div class="form-group">
                   <input type="text" class="form-control" name="name" placeholder="Enter your name:">
                 </div>
                 <div class="form-group">
@@ -151,7 +159,7 @@
                 <div class="form-group">
                     <textarea id="body" rows="5" class="form-control" >
                     </textarea>
-                </div>
+                </div>-->
                 <div class="form-group">
 
                 </div>
@@ -159,10 +167,10 @@
               <!-- /.card-body -->
               <div class="card-footer">
                 <div class="float-right">
-                  <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Draft</button>
-                  <button type="button" onclick="sendEmail()" name="submit" class="btn btn-primary" value="Send an email"><i class="far fa-envelope"></i> Send</button>
+                  <!--<button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Draft</button>-->
+                  <button type="button" onclick="sendEmail()" name="submit" class="btn btn-primary" value="Send an email"><i class="far fa-envelope"></i>Send it to my email</button>
                 </div>
-                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>
+                <!--<button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>-->
               </div>
             </form>
               <!-- /.card-footer -->
